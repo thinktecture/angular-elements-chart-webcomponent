@@ -45,7 +45,7 @@ export class PieChartComponent implements OnChanges {
         } else {
           this.data = (JSON.parse(changes.dataValues.currentValue));
         }
-      } catch (e) {
+      } catch (e) {  // We should have some better error handling
         console.log(e);
         return false;
       }
