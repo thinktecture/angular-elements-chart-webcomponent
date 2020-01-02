@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-pie-chart',
@@ -9,6 +9,9 @@ export class PieChartComponent implements OnChanges {
   @Input()
   dataValues: Object;
   data: any[];
+
+  @Output()
+  selected = new EventEmitter();
 
   view: any[] = [900, 500];
 
@@ -23,6 +26,7 @@ export class PieChartComponent implements OnChanges {
 
   onSelect(eventData): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(eventData)));
+    this.selected.emit(eventData);
   }
 
   onActivate(eventData): void {
